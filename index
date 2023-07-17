@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <?!= include("styles-css"); ?>
+  </head>
+  <body>
+   
+    <!-- Start Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #25a2b3;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">เมนูหลัก</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">ประวัติร้านค้า</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">อาหารจานด่วน</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            เมนูอาหาร
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">อาหารไทย</a></li>
+            <li><a class="dropdown-item" href="#">อาหารแนวยุโรป</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">อาหารอีสาน</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">ขอบคุณที่ใช้บริการของเรา</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+    <!-- Stop Navbar -->
+
+<!-- Start Head manu -->
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="alert alert-danger" role="alert">
+  ระบบสั่งอาหาร/รับออเดอร์
+</div>
+    </div>
+
+  </div>
+</div>
+
+
+<main class="main-container flex-row">
+
+
+
+       <section class="menu-payment grid">
+            <div class="menu flex-row" id="menu">
+
+            </div>
+            <div class="payment grid" id="payment-overlay">
+                <div class="paypad grid" id="paypad">
+                    <button class="paypad-btn number" data-id="7">7</button>
+                    <button class="paypad-btn number" data-id="8">8</button>
+                    <button class="paypad-btn number" data-id="9">9</button>
+                    <button class="paypad-btn number" data-id="4">4</button>
+                    <button class="paypad-btn number" data-id="5">5</button>
+                    <button class="paypad-btn number" data-id="6">6</button>
+                    <button class="paypad-btn number" data-id="1">1</button>
+                    <button class="paypad-btn number" data-id="2">2</button>
+                    <button class="paypad-btn number" data-id="3">3</button>
+                    <button class="paypad-btn number" data-id="0">0</button>
+                    <button class="paypad-btn " data-id="back">กลับ</button>
+                    <button class="paypad-btn " data-id="clear">รีเซ็ต</button>
+                    <button class="paypad-btn span3-col" id="close-sale" data-id="close-sale">
+                    จ่ายเงินเรียบร้อย<br>กรุณาคลิ๊กกรอบข้อความนี้<br>เพื่อปิดหน้าต่างการคิดเงิน<br> กดคลิ๊กสิ</button>
+                </div>
+                <div class="close-paypad flex">
+                    <i class="fas fa-times close-icon paypad-close" id="paypad-close"></i>
+                </div>
+            </div>
+       </section>
+
+
+        <section class="order flex-column">
+            <article class="receipt flex-column">
+                <div class="company-info flex-column">
+                    <p id="company-name">ร้าน นางน้อย ชา-กาแฟสด คาแฟร์ </p>
+                    <p id="company-address">บ้านโนนเสาขวัญ ชายทุ่งนา </p>
+                    <p id="company-city">ตำบล ดอนทอง อำเภอ ทองคำ จังหวัด สกลนคร </p>
+                    <p id="company-phone">000-111-2200</p>
+                    <p id="invoice-number"></p>
+                </div>
+                <div class="receipt-details">
+                    <table class="details-table">
+                        <thead>
+                            <tr>
+                                <td class="dotted-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <th class="description">รายการ</th>
+                                <th class="quantity">จำนวน</th>
+                                <th class="price">ราคา</th>
+                                <th class="subtotal">ราคารวม</th>
+                                <th class="delete">ลบ</th>
+                            </tr>
+                            <tr>
+                                <td class="dotted-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="5"></td>
+                            </tr>
+                        </thead>
+                        <tbody id="receipt-details">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="receipt-summary">
+                    <table class="summary-table ">
+                        <tbody class="summary-table" id="total-summary">
+                            <tr>
+                                <td class="dotted-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>รวมราคาสินค้า:</td>
+                                <td id="subtotal-summary">0.00 บาท</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>ภาษี:</td>
+                                <td id="tax-summary">0.00 บาท </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>รวมเป็นเงินทั้งสิ้น:</td>
+                                <td id="grandtotal-summary">0.00 บาท</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tbody class="summary-table" id="payment-summary">
+                            <tr>
+                                <td>ได้รับเงินมา:</td>
+                                <td id="amount-paid">0.00 บาท</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td id="tip-change-title">ทอน:</td>
+                                <td id="tip-change-value">0.00 บาท</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>เลือกชนิดการจ่ายเงิน:</td>
+                                <td id="payment-type"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="dotted-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="3"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="receipt-footer flex-column">
+                    <br>
+<p align="right" style="margin-right:50px;" >
+ 
+            <div class="toolbar flex-row">
+               <button type="button" class="btn btn-danger toolbar-icon paypad-show" data-payment-type='{"type" : "cash"}'>จ่ายเงินสด</button>
+                <button type="button" class="btn btn-warning toolbar-icon paypad-show" data-payment-type='{"type" : "credit"}'>บัตรเคดิต</button>
+                <button type="button" class="btn btn-success toolbar-icon" id="clear-order">ยกเลิก</button>
+            </div>
+        
+       </p>
+                    <p id="receipt-message">ขอบคุณที่ใช้บริการของเรา</p>
+                    <p id="barcode"></p>
+                </div>
+            </article>
+      
+
+<article class="receipt flex-column">
+    
+ <table class="table table-success table-striped">
+ <tr>
+  
+  <td id="date">รายารเมนูหลัก วัน เดือน ปี  12 กรกฏาคม พ.ศ.2566 </td>
+ </tr>
+</table>
+
+
+
+ <!-- show Table -->
+  <table class="table table-success table-striped">
+    <!-- <table class="table"> -->
+  <thead>
+    <tr>
+      <th scope="col">ที่</th>
+      <th scope="col">สินค้า</th>
+      <th scope="col" class="text-center">ราคา</th>
+      <th scope="col" class="text-center">จำนวน</th>
+      <th scope="col" class="text-center">รวม</th>
+      <th scope="col">ลบ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">1</td>
+      <td>กุ้งอบหม้อดิน</td>
+      <td class="text-center">150.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">150.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+
+        <tr>
+      <td scope="row">2</td>
+      <td>หัวปลาช่อนนึ่งมะนาว</td>
+      <td class="text-center">90.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">90.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+
+        <tr>
+      <td scope="row">3</td>
+      <td>ไก่ทอด</td>
+      <td class="text-center">50.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">50.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+        <tr>
+      <td scope="row">4</td>
+      <td>ไอสครีม</td>
+      <td class="text-center">50.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">50.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+        <tr>
+      <td scope="row">5</td>
+      <td>ปลาดุกยำตะไคร้</td>
+      <td class="text-center">150.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">150.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+        <tr>
+      <td scope="row">6</td>
+      <td>กุ้งอบ</td>
+      <td class="text-center">60.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">60.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+        <tr>
+      <td scope="row">7</td>
+      <td>พิซซ่า</td>
+      <td class="text-center">99.00</td>
+      <td align="center" >
+        <input type="number" name="qty" class="form-control" value="1" min="1" max="5">
+        </td>
+      <td class="text-center">99.00</td>
+      <td ><a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+    </tr>
+
+    <tr> 
+      <td colspan="5" align="center">มูฟเฟ คนละ 199 บาท</td>
+      <td  align="right"></td>
+      </tr>
+
+  </tbody>
+</table><br>
+<p >
+
+  <button type="button" class="btn btn-danger toolbar-icon" id="clear-order">ยกเลิกออร์เดอร์</button>
+  <button type="button" class="btn btn-warning">คำนวนราคาใหม่</button>
+  <button type="button" class="btn btn-success toolbar-icon paypad-show" data-payment-type='{"type" : "cash"}'>สั่งซื้อ</button>
+
+</p>
+    
+
+            </article>
+
+        </section>
+
+
+    </main>
+  
+<!-- 
+          </div>
+     
+    </div> -->
+
+ <?!= include("Todate"); ?>
+  <?!= include('script-js') ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
