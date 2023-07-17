@@ -1,0 +1,261 @@
+<style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+    height: 100%
+}
+
+main {
+    height: 92%;
+}
+
+body {
+    background-color: #d9d8d4;
+    ;
+}
+
+header {
+    background-color: rgb(255, 255, 255, .1);
+    color: #a7e1ee;
+    font-size: smaller;
+}
+
+header h1 {
+    font-family: 'Audiowide', cursive;
+    margin-left: 15px;
+}
+
+main {
+    margin-top: 10px;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.order,
+.menu-payment {
+    border: solid .5px;
+    border-radius: 10px;
+    margin: 0px 10px 5px 10px;
+    height: 100%;
+    max-height: 100%;
+}
+
+
+/*--------------------------------ORDER------------------------*/
+
+.order {
+    background-color: #f1f2bb;
+    flex: 0 0 400px;
+    overflow: auto;
+}
+
+.receipt {
+    border: solid .5px;
+    margin: 10px 15px 5px 15px;
+    box-shadow: 3px 3px 2px rgb(3, 3, 3);
+    user-select: none;
+    flex-grow: 1;
+}
+
+.receipt,
+.company-info,
+.receipt-footer {
+    align-items: center;
+}
+
+.company-info {
+    margin-top: 5px;
+}
+
+#company-name {
+    font-size: 1.5rem;
+}
+
+#company-phone {
+    font-size: 1.25rem;
+}
+
+th.description {
+    width: 200px;
+    text-align: left;
+}
+
+th.price {
+    width: 150px;
+}
+
+th.subtotal {
+    width: 120px;
+}
+
+.quantity,
+.price,
+.subtotal,
+.delete {
+   width: 70px;
+    text-align: right;
+}
+
+.receipt-details {
+    margin-top: 10px;
+    flex-grow: 1;
+}
+
+.dotted-border {
+    border-bottom: dotted 2px;
+}
+
+.fa-backspace:hover {
+    transform: scale(1.2);
+}
+
+table.summary-table {
+    text-align: right;
+}
+
+tbody.summary-table td:nth-child(1) {
+    width: 100px;
+}
+
+tbody.summary-table td:nth-child(2) {
+    width: 100px;
+}
+
+tbody.summary-table td:nth-child(3) {
+    width: 100px;
+}
+
+.receipt-footer {
+    padding-top: 100px;
+}
+
+#barcode {
+    font-family: 'Libre Barcode 128', cursive;
+    font-size: 70px;
+    margin-top: 10px;
+}
+
+.toolbar {
+    flex: 0 0 60px;
+    justify-content: space-around;
+    align-items: center;
+    border: solid .5px;
+    border-radius: 10px;
+    margin: 0px 15px 5px 15px;
+}
+
+.toolbar-icon {
+    font-size: 1rem;
+}
+
+.toolbar-icon:hover {
+    transform: scale(1.2);
+}
+
+
+/*--------------------------------MENU--PAYMENT------------------------*/
+
+.menu-payment {
+    background: rgba(255, 255, 255, .05);
+    flex-grow: 1;
+    z-index: 0;
+}
+
+.menu {
+    background: rgba(255, 255, 255, .05);
+    grid-column: 1;
+    grid-row: 1;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    z-index: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.menu-item {
+    flex-flow: column nowrap;
+    flex-basis: auto;
+    flex-shrink: 0;
+    margin: 5px;
+    background: rgba(255, 255, 255, .05);
+    width: 150px;
+}
+
+.menu-img {
+     width: 130px;
+     height: 130px;
+     display: block;
+     margin-botton:20px;
+}
+
+figcaption {
+    color: block;
+    text-align: center;
+    user-select: none;
+}
+
+
+
+.menu-item:hover>.menu-img {
+    transform: scale(1.03);
+}
+
+#payment-overlay {
+    display: none;
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-columns: 330px auto;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background: rgba(255, 255, 255, .05);
+}
+
+.paypad {
+    margin: 10px 0 0 10px;
+    align-content: center;
+    grid-column: 1;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(5, 100px);
+}
+
+.span3-col {
+    grid-column: span 3;
+}
+
+#close-sale {
+    display: none;
+}
+
+.paypad-btn.number {
+    font-size: 2rem;
+}
+
+.close-icon {
+    color: white;
+    font-size: 3rem;
+    margin: 150px 0 0 15px;
+}
+
+.close-icon:hover {
+    transform: scale(1.03);
+}
+</style>
