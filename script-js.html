@@ -26,7 +26,7 @@ class Order {
 
         menuArray.forEach(menuItem => {
             let currItem = {};
-            currItem.sku = menuItem[0];
+            currItem.idu = menuItem[0];
             currItem.description = menuItem[1];
             currItem.price = menuItem[2];
             currItem.taxRate = menuItem[3];
@@ -96,12 +96,12 @@ class Order {
     }
 
 
-    addOrderLine(quantity, sku) {
+    addOrderLine(quantity, idu) {
         let currentLine = {};
 
         for (let i = 0; i < this._menu.length; i++) {
-            if (sku === this._menu[i].sku) {
-                currentLine.sku = this._menu[i].sku;
+            if (idu === this._menu[i].idu) {
+                currentLine.idu = this._menu[i].idu;
                 currentLine.description = this._menu[i].description;
                 currentLine.quantity = quantity;
                 currentLine.price = this._menu[i].price;
@@ -198,7 +198,7 @@ class Order {
             currentLine[0] = this.todayNumber;
             // currentLine[0] = date; //ก่อน อันแรก
             currentLine[1] = this.invoiceNumber;
-            currentLine[2] = orderLine.sku;
+            currentLine[2] = orderLine.idu;
             currentLine[3] = orderLine.quantity;
             currentLine[4] = orderLine.price;
             currentLine[5] = orderLine.tax;
@@ -261,7 +261,7 @@ class Ui {
             
             let node = document.createElement("figure");
             node.className = "menu-item";
-            node.setAttribute("data-sku", `${item.sku}`);
+            node.setAttribute("data-idu", `${item.idu}`);
             node.innerHTML = menuElement;
             frag.appendChild(node);
         });
@@ -270,7 +270,7 @@ class Ui {
 
         document.querySelectorAll(".menu-item").forEach(button => {
         button.addEventListener('click', () => {
-         orderInstance.addOrderLine(1, parseInt(button.getAttribute("data-sku")));
+         orderInstance.addOrderLine(1, parseInt(button.getAttribute("data-idu")));
          
             });
         })
